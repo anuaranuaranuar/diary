@@ -1,0 +1,32 @@
+:root{--Fcolor: #cea889b4;
+}
+
+body{background-image: url(img/diario.jpg);}
+
+#reg{display: none;}
+
+h1{
+    background-color:var(--Fcolor); 
+    border-radius: 5px;
+    margin: 80px auto;
+    color: rgb(202,120,57);
+    font-family: cursive;
+    font-style: oblique;
+    -webkit-text-stroke-color: rgba(0, 0, 0, 0.144);
+    -webkit-text-stroke-width: 1px;
+
+}
+
+#reg{background-color: var(--Fcolor) ;
+     border-radius: 5px;
+    }
+
+#log{ background-color: var(--Fcolor);
+     border-radius: 5px;} 
+     
+label{font-family: cursive;
+    font-style: oblique;
+    margin: 5px 8px;
+}   
+
+

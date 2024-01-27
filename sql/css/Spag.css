@@ -1,0 +1,37 @@
+#user {
+    margin-top: 10px;
+    margin-bottom: 20px;
+    background-color: #cea889b4;
+    color :rgb(202,120,57);
+    -webkit-text-stroke-color: rgba(0, 0, 0, 0.144);
+    -webkit-text-stroke-width: 1px;
+    font-family: cursive;
+    font-style: oblique;
+}
+
+body {
+    background-image: url(img/diario.jpg)   ;
+}
+
+h1{
+ font-family: Brush Script MT; 
+ color:rgba(249, 174, 222);
+ background-color: rgb(0, 0, 0, 0.5);
+ border-radius: 5px;
+ margin: 0 auto;
+}            
+div{border-radius: 5px;}
+
+
+
+body{text-align: center;}
+
+a{color: white;
+  text-decoration: none;
+}
+
+textarea{border-radius: 5px;}
+
+a:hover{text-decoration: none;
+    color: white;
+}
