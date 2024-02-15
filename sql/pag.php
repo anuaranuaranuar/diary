@@ -10,14 +10,12 @@ echo "<h1 id='user' class='col-7' >bienvenido  " . $_SESSION['user'] . "</em></h
 if (array_key_exists('user', $_SESSION)) {
     $link = mysqli_connect("127.0.0.1", "root", "", "sql");
 
-    if (mysqli_connect_error()) {
-        die("there was an error connecting to database.");
-    } else {
-        $query = 'SELECT notas FROM login WHERE correo ="' . $_SESSION['user'] . '"';
-        $result = mysqli_query($link, $query);
+   
+    $query = 'SELECT notas FROM login WHERE correo ="' . $_SESSION['user'] . '"';
+    $result = mysqli_query($link, $query);
         $nota = mysqli_fetch_array($result);
     }
-} 
+
 
 
 if (array_key_exists("nota", $_POST)) {

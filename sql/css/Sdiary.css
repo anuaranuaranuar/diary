@@ -8,7 +8,7 @@ body{background-image: url(img/diario.jpg);}
 h1{
     background-color:var(--Fcolor); 
     border-radius: 5px;
-    margin: 80px auto;
+    margin: 60px auto 40px ;
     color: rgb(202,120,57);
     font-family: cursive;
     font-style: oblique;
@@ -28,5 +28,10 @@ label{font-family: cursive;
     font-style: oblique;
     margin: 5px 8px;
 }   
+
+.alert{max-width: 260px;
+    position: fixed;
+}
+
 
 

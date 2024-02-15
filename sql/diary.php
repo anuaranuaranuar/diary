@@ -2,32 +2,30 @@
 
 //$query = "SELECT * FROM login";
 
+$status=true;
+
+function aler($alert,$status){
 
 
-function alert (){
-$alert = 4;
+   
+   if ($status==true){
+      echo '<div class="alert alert-success Dsuse" role="alert">'
+      . $alert .
+      '</div>';
+      
+   }
 
-   if (!$alert==""){
-      if ($status==true){
-         echo '<div class="alert alert-success Dsuse" role="alert">
-         A simple danger alert—check it out!
-         </div>';
-         
-      }
-
-      if ($status==false){
-         echo '<div class="alert alert-danger Dalert" role="alert">
-         A simple danger alert—check it out!
-         </div>';
-      }
-
+   if ($status==false){
+      echo '<div class="alert alert-danger Dalert" role="alert">'
+      . $alert .
+      '</div>';
    }
 
 }
 
 if(array_key_exists("id", $_COOKIE)){
- header("location: pag.php");
-}
+   header("location: pag.php");
+  }
 
 if (array_key_exists('email', $_POST) or  array_key_exists('password', $_POST)) {
    $link = mysqli_connect("127.0.0.1", "root", "", "sql");
@@ -36,7 +34,9 @@ if (array_key_exists('email', $_POST) or  array_key_exists('password', $_POST)) 
       die("there was an error connecting to database.");
    }
    if ($_POST['email'] == '') {
-      echo '<p>falta el correo</p>';
+      $alert = '<p>falta el correo</p>';
+      $status = false;
+      
    }
    if ($_POST['password'] == '') {
       echo '<p>falta la contraseña</p>';
@@ -48,18 +48,21 @@ if (array_key_exists('email', $_POST) or  array_key_exists('password', $_POST)) 
 
       if (mysqli_num_rows($result) > 0) {
          echo '<p>email ya registrado</p>';
+         
       } else {
          $hash = password_hash($_POST['password'], PASSWORD_DEFAULT);
-         echo $_POST['password'];
-
          $query = "INSERT INTO login (correo , password) VALUES ('"
             . mysqli_real_escape_string($link, $_POST['email']) . "' , '" .
             mysqli_real_escape_string($link, $hash) . "')";
 
          if (mysqli_query($link, $query)) {
-            echo '<p>registrado </p>';
+            $alert = '<p>registrado </p>';
+            $status = true;
+            aler($alert,$status);
          } else {
-            echo '<p>intentelo de nuevo por favor</p>';
+            $alert = '<p>intentelo de nuevo por favor</p>';
+            $status = false;
+            aler($alert,$status);
          }
       }
    }
@@ -84,7 +87,6 @@ if (array_key_exists("emaillog", $_POST) or array_key_exists("clave", $_POST)) {
 
          $pass = mysqli_fetch_array($result);
 
-
          if (password_verify($_POST['clave'], $pass[0])) {
             session_start();
             $_SESSION['user'] = $_POST['emaillog'];
@@ -95,10 +97,14 @@ if (array_key_exists("emaillog", $_POST) or array_key_exists("clave", $_POST)) {
             header("location: pag.php");
             
          } else {
-            echo "contraseña incorrecta<br>";
+            $alert = "<p>Contraseña incorrecta</p>";
+            $status = false;
+            aler($alert,$status);
          }
       } else {
-         echo "<p>aun no registrado</p>";
+         $alert = "<p>Su correo aun no ha sido registrado</p>";
+         $status = false;
+         aler($alert,$status);
       }
    }
 }
